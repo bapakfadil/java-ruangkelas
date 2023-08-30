@@ -1,0 +1,17 @@
+.recentOrders {
+  display: block !important;
+}
+
+.recentOrders .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.recentOrders .btn:hover {
+  background: var(--white);
+  color: var(--blue);
+}

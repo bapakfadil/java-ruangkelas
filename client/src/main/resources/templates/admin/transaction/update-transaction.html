@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-admin}"
+>
+<th:block layout:fragment="add-css">
+    <link rel="stylesheet" th:href="@{/css/course-admin.css}" />
+    </style>
+  </th:block>
+  <body>
+    <!-- =================== main content below ==================== -->
+    <div class="main" layout:fragment="main">
+
+      <!-- ================ content ================= -->
+      <div class="details" style="display: block;">
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <h2>Update Status Transaction</h2>
+            <a th:href="@{/admin/dasboard/transaction}" class="btn">Back</a>
+          </div>
+           <table>
+            <!-- <thead>
+              <tr>
+                <td>No</td>
+                <td>#</td>
+                <td>Title</td>
+                <td>Active</td>
+                <td>Action</td>
+              </tr>
+            </thead> -->
+
+            <tbody >
+              <tr>
+                <td>status</td>
+                <td>
+                    <span
+                      class="status "
+                    th:classappend="${transaction.status.toString() == 'PROCESS'} ? 'inProgress' : (${transaction.status.toString() == 'SUCCESS'} ? 'delivered' : (${transaction.status.toString() == 'FAILED'} ? 'return' : 'pending' ))"
+                    th:text="${transaction.status}"></span>
+                </td>
+                <th:block th:each=" course : ${transaction.course}">
+                  <td rowspan="5" style="text-align: left;">
+                    <p>Course</p>
+                    <div class="card" style="width: 18rem;">
+                      <img th:src="${course.thumbnail}" class="card-img-top" alt="course">
+                      <div class="card-body">
+                        <h5 th:text="${course.title}" class="card-title">Card title</h5>
+                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li th:text="${course.periode}" class="list-group-item">An item</li>
+                        <li th:text="${course.price}" class="list-group-item">A second item</li>
+                      </ul>
+                    </div>
+                  </td>
+                </th:block>
+              </tr>
+               <tr>
+                <td>Id</td>
+                <td id="dataId" th:text="${transaction.id}"></td>
+              </tr>
+               <tr>
+                <td>Tgl Transaction</td>
+                  <td th:text="${transaction.created_at}"></td>
+              </tr>
+               <tr>
+                <td>Member Name</td>
+                <th:block th:each=" member : ${transaction.member}">
+                  <td th:text="${member.name}"></td>
+                </th:block>
+              </tr>
+               <tr>
+                <td>Email</td>
+                <th:block th:each=" member : ${transaction.member}">
+                  <td th:text="${member.email}"></td>
+                </th:block>
+              </tr>
+               <tr>
+                  <td colspan="3">
+                    <ul style="text-align: left;">
+                      <p>Keterangan:</p>
+                    <li><span class="status delivered">success</span> : jika member lulus ujian pre-test</li>
+                    <li><span class="status return">failed</span> : jika member gagal ujian pre-test </li>
+                    <li>perubahan status akan mengirimkan sebuah email</li>
+                  </ul>
+                    <div class="text-center  p-4 d-flex justify-content-between">
+                      <div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radiostatus" id="inlineRadio1" value="success" checked>
+                        <label class="form-check-label" for="inlineRadio1">
+                          <span class="status delivered">success</span>
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radiostatus" id="inlineRadio2" value="failed" >
+                        <label class="form-check-label" for="inlineRadio2">
+                          <span class="status return">failed</span>
+                        </label>
+                      </div>
+                      </div>
+                      <div>
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <!-- <button id="btn-save"   type="button" class="btn btn-primary">Save changes</button> -->
+                        <div id="loadingSpinner" class="spinner-border text-primary" role="status" style="display: none;">
+                          <span class="visually-hidden">Memuat...</span>
+                        </div>
+                        <button id="myButton" class="btn btn-primary mx-3" onclick="performAction()">Save changes</button>
+                      </div>
+                    </div>
+                  </td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>
+      </div>
+    </div>
+    <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <script th:src="@{/js/transaction.js}"></script>
+    </th:block>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-user-dasboard}"
+>
+<th:block layout:fragment="add-css">
+    <link rel="stylesheet" th:href="@{/css/course-admin.css}" />
+    </style>
+  </th:block>
+  <body>
+    <!-- =================== main content below ==================== -->
+    <div class="main" style="padding-top: 5rem;" layout:fragment="main-user-dasboard">
+      <div class="details" style="display: block;">
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <h2>History transactions</h2>
+            <!-- <a th:href="@{/admin/dasboard/course/create}" class="btn">Add Course</a> -->
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <!-- <td>No</td> -->
+                <td>Tanggal/waktu</td>
+                <td>status</td>
+                <td>Course</td>
+                <!-- <td>terdaftar</td> -->
+              </tr>
+            </thead>
+
+            <tbody th:each="history, key : ${histories}">
+              <tr>
+                <!-- <td th:text="${key.count}"></td> -->
+                <td th:text="${history.date}"></td>
+                <td>
+                  <span
+                    class="status "
+                   th:classappend="${history.status.toString() == 'PROCESS'} ? 'inProgress' : (${history.status.toString() == 'SUCCESS'} ? 'delivered' : (${history.status.toString() == 'FAILED'} ? 'return' : 'pending' ))"
+                   th:text="${history.status}"></span>
+                </td>
+                <th:block th:each="transaction : ${history.transaction}" >
+                  <th:block th:each="course : ${transaction.course}" >
+                    <td th:text="${course.title}"></td>
+                  </th:block>
+                </th:block>
+                <!-- <th:block th:each=" course : ${transaction.course}">
+                  <td th:text="${course.title}"></td>
+                </th:block> -->
+                <!-- <td>
+                    <span
+                    class="status delivered"
+                    th:classappend="${transaction.is_registered.toString() == 'false' && transaction.status.toString() == 'FAILED'} ? 'return' : (${transaction.is_registered.toString() == 'true'} ? 'delivered' : 'pending')"
+                    th:text="${transaction.is_registered}"
+                  ></span>
+                </td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+
+    </div>
+
+    </div>
+     <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <!-- <script type="module" th:src="@{/js/course-admin.js}"></script> -->
+    </th:block>
+  </body>
+</html>

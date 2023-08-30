@@ -1,0 +1,12 @@
+.recentOrders {
+  display: block !important;
+}
+
+.recentOrders .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: #5fcf80;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-admin}"
+>
+<th:block layout:fragment="add-css">
+    <link rel="stylesheet" th:href="@{/css/course-admin.css}" />
+    </style>
+  </th:block>
+  <body>
+    <!-- =================== main content below ==================== -->
+    <div class="main" layout:fragment="main">
+  
+
+      <div class="details" style="display: block;">
+        <div class="recentOrders">
+          <div class="cardHeader">
+          <h2>Detail Courses</h2>
+          <a th:href="@{/admin/dasboard/course}" class="btn">Back</a>
+          </div>
+          
+        <table>
+            <!-- <thead>
+              <tr>
+                <td>No</td>
+                <td>#</td>
+                <td>Title</td>
+                <td>Active</td>
+                <td>Action</td>
+              </tr>
+            </thead> -->
+
+            <tbody >
+               <tr>
+                <td>Id: </td>
+                <td th:text="${course.id}"></td>
+              </tr>
+               <tr>
+                <td>Thumbnail URL: </td>
+                <td th:text="${course.thumbnail}"></td>
+              </tr>
+               <tr>
+                <td>Title: </td>
+                <td th:text="${course.title}"></td>
+              </tr>
+               <tr>
+                <td>instructor: </td>
+                <td th:text="${course.instructor}"></td>
+              </tr>
+               <tr>
+                <td>description: </td>
+                <td th:utext="${course.description}" style="text-align: left;">
+                </td>
+              </tr>
+               <tr>
+                <td>price: </td>
+                <td th:text="${course.price}"></td>
+              </tr>
+               <tr>
+                <td>periode: </td>
+                <td th:text="${course.periode}"></td>
+              </tr>
+               <!-- <tr>
+                <td>start: </td>
+                <td th:text="${course.start}"></td>
+              </tr>
+               <tr>
+                <td>end: </td>
+                <td th:text="${course.end}"></td>
+              </tr> -->
+               <tr>
+                <td>is_enabled: </td>
+                <td th:text="${course.is_enabled}"></td>
+              </tr>
+               <tr>
+                <td>created_at: </td>
+                <td th:text="${course.created_at}"></td>
+              </tr>
+
+            </tbody>
+          </table> 
+        </div>
+
+      </div>
+    </div>
+     <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <!-- <script type="module" th:src="@{/js/course-admin.js}"></script> -->
+    </th:block>
+  </body>
+</html>

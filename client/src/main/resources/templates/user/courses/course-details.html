@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-user}"
+>
+  <th:block layout:fragment="add-css">
+    <!-- <link rel="stylesheet" th:href="@{/css/course-admin.css}" /> -->
+    <!-- </style> -->
+  </th:block>
+  <body>
+    <!-- =================== main content below ==================== -->
+    <main id="main" layout:fragment="main-user">
+      <!-- ======= Breadcrumbs ======= -->
+      <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+          <h2>Course Details</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est at quis cum ullam odit obcaecati. Aspernatur quibusdam quo possimus aliquid, dignissimos dolorem enim impedit, ullam corporis reprehenderit delectus fuga pariatur?
+          </p>
+        </div>
+      </div>
+      <!-- End Breadcrumbs -->
+
+      <!-- ======= Cource Details Section ======= -->
+      <section id="course-details" class="course-details" th:object="${course}">
+        <div class="container" data-aos="fade-up">
+          <div class="row">
+            <div class="col-lg-8">
+              <img
+              th:src="${course.thumbnail}" 
+                class="img-fluid"
+                alt=""
+              />
+              <h3 th:text="${course.title}">Et enim incidunt fuga tempora</h3>
+              <p th:utext="${course.description}">
+                Qui et explicabo voluptatem et ab qui vero et voluptas. Sint
+                voluptates temporibus quam autem. Atque nostrum voluptatum
+                laudantium a doloremque enim et ut dicta. Nostrum ducimus est
+                iure minima totam doloribus nisi ullam deserunt. Corporis aut
+                officiis sit nihil est. Labore aut sapiente aperiam. Qui
+                voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem
+                officia voluptatem adipisci et iusto provident doloremque
+                consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
+                Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia
+                ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem
+                voluptas ut sit ut.
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <div
+                class="course-info d-flex justify-content-between align-items-center"
+              >
+                <h5>Trainer</h5>
+                <p><a th:text="${course.instructor}">Walter White</a></p>
+              </div>
+
+              <div
+                class="course-info d-flex justify-content-between align-items-center"
+              >
+                <h5>Course Fee</h5>
+                <p th:text="${course.price}">$165</p>
+              </div>
+
+              <!-- <div
+                class="course-info d-flex justify-content-between align-items-center"
+              >
+                <h5>Available Seats</h5>
+                <p>30</p>
+              </div> -->
+
+              <div
+                class="course-info d-flex justify-content-between align-items-center"
+              >
+                <h5>Periode</h5>
+                <p th:text="${course.periode}">3 bulan</p>
+              </div>
+
+              <div
+                class="course-info d-flex justify-content-between align-items-center"
+              >
+              <form th:action="@{/courses/{id} (id=${course.id})}" th:method="POST">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    required
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Saya sudah mengerjakan pre-test
+                  </label>
+                </div>
+              </div>
+                <div
+                  class="course-info d-flex justify-content-between align-items-center"
+                >
+                  <button type="submit" class="get-started-btn" style="width: 100%;">
+                    Daftar Kelas
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Cource Details Section -->
+
+      <!-- ======= Cource Details Tabs Section ======= -->
+      <section id="cource-details-tabs" class="cource-details-tabs">
+        <div class="container" data-aos="fade-up">
+          <div class="row">
+            <div class="col-lg-3">
+              <ul class="nav nav-tabs flex-column">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active show"
+                    data-bs-toggle="tab"
+                    href="#tab-1"
+                    >Tata Cara Pendaftaran</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-2"
+                    >Link Pre-Test</a
+                  >
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-3"
+                    >Pariatur explicabo vel</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-4"
+                    >Nostrum qui quasi</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-5"
+                    >Iusto ut expedita aut</a
+                  >
+                </li> -->
+              </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+              <div class="tab-content">
+                <div class="tab-pane active show" id="tab-1">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Alur Pendaftaran Kelas</h3>
+                      <ol>
+                        <li>Pengguna mengakses halaman pendaftaran kelas</li>
+                        <li>Pengguna melihat informasi tentang kelas yang tersedia.</li>
+                        <li>Pengguna memutuskan untuk mendaftar dan mengklik link pre-test</li>
+                        <li>Pengguna mengerjakan pre-test menggunakan alamat email akun terdaftar</li>
+                        <li>Setelah mengerjakan pre-test Pengguna konfirmasi dengan checklist "saya sudah mengerjakan pre test"</li>
+                        <li>Kemudian click tombol Daftar Kelas</li>
+                        <li>Pengguna menunggu proses dari admin</li>
+                        <li>Jika diterima maka Kelas akan masuk ke dasboard</li>
+                        <li>Pengguna dapat mengakses Kelas tersebut</li>
+                      </ol>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img
+                        src="/assets/img/course-details-tab-1.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-2">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Link Pre-Test</h3>
+                      <!-- <p class="fst-italic">
+                        Qui laudantium consequatur laborum sit qui ad sapiente
+                        dila parde sonata raqer a videna mareta paulona marka
+                      </p> -->
+                      <th:block th:if="${auth}">
+                        <p>
+                          Berikut link Pre-Test <a href="https://bit.ly/TestCourseI" target="_blank">clik disini</a>. Selamat mengerjakan
+                        </p>
+                      </th:block>
+                      <th:block th:if="${not auth}">
+                        <p>
+                          silahkan login dahulu untuk mengakses link pre-test
+                        </p>
+                      </th:block>
+
+                      </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img
+                        src="/assets/img/course-details-tab-2.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="tab-pane" id="tab-3">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+                      <p class="fst-italic">
+                        Eos voluptatibus quo. Odio similique illum id quidem non
+                        enim fuga. Qui natus non sunt dicta dolor et. In
+                        asperiores velit quaerat perferendis aut
+                      </p>
+                      <p>
+                        Iure officiis odit rerum. Harum sequi eum illum corrupti
+                        culpa veritatis quisquam. Neque necessitatibus illo
+                        rerum eum ut. Commodi ipsam minima molestiae sed
+                        laboriosam a iste odio. Earum odit nesciunt fugiat sit
+                        ullam. Soluta et harum voluptatem optio quae
+                      </p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img
+                        src="/assets/img/course-details-tab-3.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-4">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>
+                        Fuga dolores inventore laboriosam ut est accusamus
+                        laboriosam dolore
+                      </h3>
+                      <p class="fst-italic">
+                        Totam aperiam accusamus. Repellat consequuntur iure
+                        voluptas iure porro quis delectus
+                      </p>
+                      <p>
+                        Eaque consequuntur consequuntur libero expedita in
+                        voluptas. Nostrum ipsam necessitatibus aliquam fugiat
+                        debitis quis velit. Eum ex maxime error in consequatur
+                        corporis atque. Eligendi asperiores sed qui veritatis
+                        aperiam quia a laborum inventore
+                      </p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img
+                        src="/assets/img/course-details-tab-4.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-5">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>
+                        Est eveniet ipsam sindera pad rone matrelat sando reda
+                      </h3>
+                      <p class="fst-italic">
+                        Omnis blanditiis saepe eos autem qui sunt debitis porro
+                        quia.
+                      </p>
+                      <p>
+                        Exercitationem nostrum omnis. Ut reiciendis repudiandae
+                        minus. Omnis recusandae ut non quam ut quod eius qui.
+                        Ipsum quia odit vero atque qui quibusdam amet. Occaecati
+                        sed est sint aut vitae molestiae voluptate vel
+                      </p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img
+                        src="/assets/img/course-details-tab-5.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Cource Details Tabs Section -->
+    </main>
+
+    <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <!-- <script type="module" th:src="@{/js/transaction.js}"></script> -->
+    </th:block>
+  </body>
+</html>

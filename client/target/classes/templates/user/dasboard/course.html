@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-user-dasboard}"
+>
+<th:block layout:fragment="add-css">
+    <link rel="stylesheet" th:href="@{/css/course-user.css}" />
+    </style>
+  </th:block>
+  <body>
+    <!-- =================== main content below ==================== -->
+    <div class="main" style="padding-top: 5rem;" layout:fragment="main-user-dasboard">
+      <div class="details" style="display: block;">
+        <div class="recentOrders">
+          <div class="cardHeader">
+            <h2>My Course</h2>
+          </div>
+             <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+              <th:block th:each=" transaction : ${transactions}">
+                <div class="card">
+                  <div>
+                    <th:block th:each=" course : ${transaction.course}">
+                      <div th:text="${course.title}" class="numbers" style="font-size: 1rem;">1,504</div>
+                      <!-- <div th:text="${course.title}" class="cardName">Daily Views</div> -->
+                    </th:block>
+                  </div>
+                  
+                  <div class="iconBx">
+                    <a class="btn disabled" type="button" href="#">Mulai</a>
+                    <!-- <ion-icon name="bookmarks"></ion-icon> -->
+                  </div>
+                </div>
+              </div>
+            </th:block>
+        </div>
+      </div>
+      
+
+    </div>
+
+    </div>
+     <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <!-- <script type="module" th:src="@{/js/course-admin.js}"></script> -->
+    </th:block>
+  </body>
+</html>

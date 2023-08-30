@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-user}"
+>
+  <th:block layout:fragment="add-css">
+    <!-- <link rel="stylesheet" th:href="@{/css/course-admin.css}" /> -->
+    <!-- </style> -->
+  </th:block>
+  <body>
+    <section layout:fragment="hero"></section>
+    <!-- =================== main content below ==================== -->
+    <main id="main" layout:fragment="main-user">
+      <section>
+        <div class="container" data-aos="fade-up">
+          <div class="row align-items-center">
+            <div class="col-4 d-flex align-items-center" id="content-left">
+              <div>
+                <form
+                  th:action="@{/login}"
+                  th:method="POST"
+                  th:object="${loginRequest}"
+                >
+                  <h2 class="mb-3 fw-bold text-success">Login</h2>
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username: </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      th:field="*{username}"
+                    />
+                    <div>
+                      <p th:text="${message}">
+                        Login error occurred. Please try again.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password: </label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      th:field="*{password}"
+                    />
+                  </div>
+                  <p>Belum punya akun? <a href="/register">buat akun</a></p>
+                  <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+              </div>
+            </div>
+            <div class="col">
+              <img src="assets/img/events-2.jpg" alt="" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <!-- <script type="module" th:src="@{/js/transaction.js}"></script> -->
+    </th:block>
+  </body>
+</html>

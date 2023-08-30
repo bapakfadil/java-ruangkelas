@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main-user}"
+>
+  <th:block layout:fragment="add-css">
+    <!-- <link rel="stylesheet" th:href="@{/css/course-admin.css}" /> -->
+    <!-- </style> -->
+  </th:block>
+  <body>
+    <section layout:fragment="hero"></section>
+    <!-- =================== main content below ==================== -->
+    <main id="main" layout:fragment="main-user">
+      <section>
+        <div class="container" data-aos="fade-up">
+          <div class="row align-items-center">
+            <div class="col">
+              <img src="assets/img/events-2.jpg" alt="" class="img-fluid" />
+            </div>
+            <div class="col-5 align-items-center" id="content-left">
+              <div>
+                <form
+                  class="rounded"
+                  th:action="@{/register}"
+                  th:method="POST"
+                  th:object="${userRequest}"
+                >
+                  <h3 class="text-center fw-bold text-success">
+                    Buat Akun Baru
+                  </h3>
+                  <p class="text-center px-5">
+                    Lengkapi form dibawah ini dengan menggunakan data Anda yang
+                    valid
+                  </p>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Nama</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      th:field="*{name}"
+                      id="name"
+                      aria-describedby="helpId"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      th:field="*{email}"
+                      id="email"
+                      aria-describedby="emailHelpId"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      th:field="*{username}"
+                      id="username"
+                      aria-describedby="helpId"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      th:field="*{password}"
+                      id="password"
+                      placeholder=""
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <p class="text-danger" th:text="${message}"></p>
+                  </div>
+
+                  <div class="mb-3 d-flex justify-content-center">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                        required
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        yakin ingin mendaftar
+                      </label>
+                    </div>
+
+                    <button
+                      style="width: 100%"
+                      type="submit"
+                      class="btn btn-success"
+                    >
+                      Daftar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <th:block layout:fragment="script">
+      <!-- <script type="module" th:src="@{js/page/country.js}"></script> -->
+      <!-- <script type="module" th:src="@{/js/transaction.js}"></script> -->
+    </th:block>
+  </body>
+</html>
